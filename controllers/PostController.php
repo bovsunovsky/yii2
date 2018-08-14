@@ -11,10 +11,14 @@ namespace app\controllers;
 use Yii;
 class PostController extends AppController
 {
-public function actionTest(){
+  public $layout = 'basic';
 
- //   var_dump(Yii::$app);
-    $this->debug(Yii::$app);
-    return $this->render('test');
+public function actionIndex(){
+return $this->render('test');
 }
+
+    public function actionShow(){
+      //  $this->layout = 'basic';
+        return $this->render('show');
+    }
 }
