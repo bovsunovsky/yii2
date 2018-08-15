@@ -1,12 +1,31 @@
 <h1>SHOW view</h1>
 
-<button class="btn btn-success">Click me ...</button>
+<?php
+$this->title ='Одна статья';
+?>
 
+<button class="btn btn-success" id="btn">Click me ...</button>
 
-<?php //$this->registerJsFile('@web/js/scripts.js',
-//    ['depends' =>'yii\web\YiiAsset']) ?>
+<?php
 
-<!---->
-<?php //$this->registerJs("$('.container').append('<p>SHOW!!!!!!</p>');", \yii\web\View::POS_LOAD)  ?>
-<!---->
-<?php //$this->registerCss('.container{background: #ccc;}') ?>
+$js = <<<JS
+$('#btn').on('click',function() {
+  $.ajax(
+      {
+      url: 'index.php?r=post/index',
+      data: {test: '123'},
+      type: 'POST',
+      success: function(res) {
+        console.log(res);
+      },
+      error: function() {
+        alert('Error!');
+      }
+      }
+  )
+    
+    
+})
+JS;
+
+$this->registerJs($js);
