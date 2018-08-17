@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use Yii;
 use app\models\TestForm;
 class PostController extends AppController
@@ -43,6 +44,7 @@ return $this->render('test', compact('model'));
 }
 
     public function actionShow(){
-         return $this->render('show');
+    $cats = Category::find()->all();
+         return $this->render('show',compact('cats'));
     }
 }
