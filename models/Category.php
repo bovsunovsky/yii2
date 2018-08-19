@@ -15,4 +15,5 @@ public static function tableName()
 {
     return 'categories';
 }
+
 }

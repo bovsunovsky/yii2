@@ -42,9 +42,29 @@ class PostController extends AppController
 
 return $this->render('test', compact('model'));
 }
-
+//  Работа с БД
     public function actionShow(){
-    $cats = Category::find()->all();
+
+ //   $cats = Category::find()->all();  // Выбрать все данные , выборка в виде обьекта
+
+//      $cats = Category::find()  // выборка в виде обьекта
+//                      ->orderBy(['id'=>SORT_DESC]) // сортировка по убыванию
+//                      ->all();
+
+
+
+//                        $cats = Category::find()
+//                      ->asArray()  // достаём данные в виде массива
+//                      ->all();
+
+                       $cats = Category::find()
+                        ->asArray()  // достаём данные в виде массива
+             //           ->where('parent=691') // задаём условия отбора в виде строки
+                        ->where(['parent' => 691])   // задаём условия отбора в виде массива ключ => значение
+                        ->all();
+
          return $this->render('show',compact('cats'));
     }
 }
+
+// видео 14 время 10:50
