@@ -57,14 +57,27 @@ return $this->render('test', compact('model'));
 //                      ->asArray()  // достаём данные в виде массива
 //                      ->all();
 
-                       $cats = Category::find()
-                        ->asArray()  // достаём данные в виде массива
-             //           ->where('parent=691') // задаём условия отбора в виде строки
-                        ->where(['parent' => 691])   // задаём условия отбора в виде массива ключ => значение
-                        ->all();
+//                       $cats = Category::find()
+//                        ->asArray()  // достаём данные в виде массива
+//                        ->where('parent=691') // задаём условия отбора в виде строки
+//                        ->where(['parent' => 691])   // задаём условия отбора в виде массива ключ => значение
+//                        ->where(['like','title','pp']) // искать 'рр' в поле title
+//                        ->where(['<=','id','695'])  // выбрать в поле id все поля значения которых меньше или равны 695
+//                        ->where('parent=691')
+//                        ->count(); // посчитать кол-во
+//                        ->limit(1) //только первую запись
+//                        ->all();
+
+//        $query = "SELECT * FROM categories WHERE title LIKE '%pp%'";
+//        $cats = Category::findBySql($query)->all();
+//
+//        $query = "SELECT * FROM categories WHERE title LIKE :search";      // в качестве LIKE передаём параметр
+//        $cats = Category::findBySql($query, [':search' => '%pp%'])->all(); // так безопасно !!
+
+      //  $cats =Category::find()->all(); //отложенная (ленивая) загрузка
+        $cats =Category::find()->with('products')->all(); // жадная загрузка
 
          return $this->render('show',compact('cats'));
     }
 }
 
-// видео 14 время 10:50
