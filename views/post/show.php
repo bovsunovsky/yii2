@@ -1,28 +1,37 @@
-<h1>SHOW action</h1>
+<?php
+use app\components\MyWidget;
+?>
 
 <?php
 $this->title ='Одна статья';
 ?>
+    <h1>SHOW action</h1>
 
 
-<!---->
+<?php //echo MyWidget::widget(['name'=> 'Вася']); ?>
+
+<?php MyWidget::begin() ?>
+<h1> привет мир </h1>
+<?php MyWidget::end() ?>
+
+    <!---->
 <?php //debug($cats); ?>
 <?php ////echo count($cats->products); ?><!-- // отложенная загрузка-->
 <?php ////debug($cats); ?>
 
 
 <?php
-    foreach ($cats as $cat){
-    echo '<ul>';
-    echo '<li>'. $cat->title .'<li>';
-    $products = $cat->products;
-    foreach ($products as $product) {
-        echo '<ul>';
-        echo '<li>'. $product->title .'</li>';
-        echo '</ul>';
-    }
-    echo '</ul>';
-}
+//    foreach ($cats as $cat){
+//    echo '<ul>';
+//    echo '<li>'. $cat->title .'<li>';
+//    $products = $cat->products;
+//    foreach ($products as $product) {
+//        echo '<ul>';
+//        echo '<li>'. $product->title .'</li>';
+//        echo '</ul>';
+//    }
+//    echo '</ul>';
+//}
     ?>
 
 
