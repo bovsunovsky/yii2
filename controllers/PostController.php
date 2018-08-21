@@ -28,8 +28,15 @@ class PostController extends AppController
         debug(Yii::$app->request->POST());
         return 'TEST';
     }
+    $post = TestForm::findOne(2);
+//    $post->email = '22@2.com';
+//    $post->save(); // UPDATE для нескольких сразу исп. updateAll()
 
-    $model = new TestForm();
+//        $post->delete();
+
+ //       TestForm::deleteAll(['>'], 'id',3); // Удаление записи из базы, для нескольких исп.
+
+        $model = new TestForm();
 //    $model->name = 'Автор';
 //    $model->email = 'mail@mail.com';
 //    $model->text = 'Текст сообщения';
